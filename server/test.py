@@ -132,7 +132,13 @@ async def main():
                         help="Save the grasp results to a JSON file")
     args = parser.parse_args()
     
-    ws_url = f"ws://{args.host}:{args.port}/ws/grasp"
+    # Handle different URL formats for local vs ngrok connections
+    if "ngrok" in args.host:
+        # For ngrok URLs, use wss:// and don't append the port
+        ws_url = f"wss://{args.host}/ws/grasp"
+    else:
+        # For local/IP connections, use standard format with port
+        ws_url = f"ws://{args.host}:{args.port}/ws/grasp"
     
     print(f"Testing AnyGrasp server at {ws_url}")
     print(f"Using example data from: {args.data_dir}")
