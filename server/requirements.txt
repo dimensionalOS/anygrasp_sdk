@@ -1,0 +1,8 @@
+fastapi==0.95.1
+uvicorn==0.22.0
+websockets==11.0.3
+python-dotenv==1.0.0
+numpy>=1.19.0
+pydantic==1.10.7
+open3d>=0.15.0
+Pillow>=9.0.0
