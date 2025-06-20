@@ -137,7 +137,7 @@ async def grasp_websocket(websocket: WebSocket):
             gg, cloud = process_grasp(points, colors, lims)
             
             # We only need the grasp data, not the point cloud
-            result = prepare_grasp_data(gg)
+            result = prepare_grasp_data(gg, os.getenv("MAX_GRASPS"))
             
             await manager.send_json(result, websocket)
             
